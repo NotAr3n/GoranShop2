@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GoranShop</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#0a1f44;--accent:#f2a900;--bg:#f3f5fa;--ink:#0f172a;--muted:#5a6480;--line:#dce2ee;--card:#fff;--danger:#b3261e;--ok:#1d7a4d;--r:10px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{background:var(--primary);color:#fff;position:sticky;top:0;z-index:20}
+.top{display:flex;align-items:center;gap:16px;padding:12px 0}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.02em}.logo b{color:var(--accent)}
+.search{flex:1;display:flex;max-width:560px}.search input{flex:1;padding:10px 14px;border:0;border-radius:var(--r) 0 0 var(--r);min-width:0}
+.search button{border:0;background:var(--accent);color:var(--ink);font-weight:700;padding:0 16px;border-radius:0 var(--r) var(--r) 0;cursor:pointer}
+.hbtn{background:none;border:0;color:#fff;cursor:pointer;padding:8px 10px;border-radius:var(--r);font-weight:700;position:relative}
+.hbtn:hover{background:rgba(255,255,255,.12)}.badge{background:var(--accent);color:var(--ink);border-radius:99px;font-size:12px;padding:0 6px;margin-left:4px}
+nav.cats{background:rgba(0,0,0,.18)}nav.cats .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.cats a{padding:9px 12px;white-space:nowrap;font-size:14px;font-weight:500;opacity:.9}nav.cats a:hover{opacity:1;background:rgba(255,255,255,.1)}
+main{min-height:65vh;padding:24px 0 56px}
+.hero{background:var(--primary) center/cover;color:#fff;border-radius:16px;padding:64px 40px;margin-bottom:32px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.05;letter-spacing:-.03em;margin:0 0 12px;max-width:640px}.hero p{max-width:480px;margin:0 0 24px;opacity:.9}
+.hero.img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,31,68,.85),rgba(10,31,68,.2))}.hero>*{position:relative}
+.btn{display:inline-block;background:var(--accent);color:var(--ink);border:0;font-weight:700;padding:12px 22px;border-radius:var(--r);cursor:pointer}
+.btn:hover{filter:brightness(.95)}.btn.dark{background:var(--primary);color:#fff}.btn.line{background:none;border:1px solid var(--line)}.btn[disabled]{opacity:.5;cursor:not-allowed}.btn.full{width:100%;text-align:center}
+h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 16px;display:flex;justify-content:space-between;align-items:baseline}h2 a{font-size:14px;font-weight:500;color:var(--muted)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}.chip{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:500}.chip:hover,.chip.on{background:var(--primary);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;position:relative}
+.ph{aspect-ratio:1;background:#e4e9f3;display:grid;place-items:center;font-size:46px;font-weight:800;color:#a3b0cb;overflow:hidden}.ph img{width:100%;height:100%;object-fit:cover}
+.card .b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:2px;flex:1}.card .n{font-weight:700;line-height:1.3}.card .br{font-size:13px;color:var(--muted)}
+.price{font-weight:800}.price s{color:var(--muted);font-weight:400;font-size:14px;margin-left:6px}
+.tag{position:absolute;top:10px;left:10px;background:var(--danger);color:#fff;font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px}.tag.out{background:#444}
+.heart{position:absolute;top:8px;right:8px}
+.layout{display:grid;grid-template-columns:230px 1fr;gap:28px}
+.side{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;align-self:start}.side h4{margin:0 0 8px}.side a{display:block;padding:5px 0;color:var(--muted)}.side a.on{color:var(--ink);font-weight:800}
+.bar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+select,input,textarea{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff;width:100%}select{width:auto}
+.pager{display:flex;gap:8px;justify-content:center;margin-top:28px}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:36px}.pdp .ph{border-radius:var(--r);font-size:96px}
+.thumbs{display:flex;gap:8px;margin-top:8px}.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer}.thumbs img.on{border-color:var(--accent)}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}.opt{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 14px;cursor:pointer}.opt.on{border-color:var(--primary);background:var(--primary);color:#fff}.opt[disabled]{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.qty{display:inline-flex;border:1px solid var(--line);border-radius:8px;background:#fff}.qty button{border:0;background:none;width:36px;cursor:pointer;font-size:18px}.qty span{min-width:32px;text-align:center;align-self:center}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.row{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.row .ph{width:72px;height:72px;font-size:24px;border-radius:8px;flex:none}.row .g{flex:1}
+.two{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}.f{display:grid;grid-template-columns:1fr 1fr;gap:12px}.f .w{grid-column:1/-1}label{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
+.sum div{display:flex;justify-content:space-between;padding:4px 0}.sum .t{font-weight:800;font-size:18px;border-top:1px solid var(--line);margin-top:8px;padding-top:12px}
+.pay{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:8px;cursor:pointer}.pay input{width:auto}
+.st{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:700;background:#e4e9f3}.st.delivered{background:#d7f0e2;color:var(--ok)}.st.cancelled,.st.returned{background:#f7dcda;color:var(--danger)}.st.shipped,.st.ready{background:#dbe9fb;color:#1a4f9c}
+.msg{color:var(--danger);font-size:14px;margin:8px 0}.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+footer{background:var(--primary);color:#d5def0;padding:36px 0;margin-top:40px}footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}footer h4{color:#fff;margin:0 0 8px}footer a{display:block;opacity:.85}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}#toast.on{opacity:1}
+.skel{height:280px;border-radius:var(--r);background:linear-gradient(90deg,#e4e9f3,#eef1f8,#e4e9f3);background-size:200% 100%;animation:sh 1.2s infinite}@keyframes sh{to{background-position:-200% 0}}
+@media(max-width:860px){.layout,.pdp,.two{grid-template-columns:1fr}.side{display:none}.hero{padding:40px 22px}.top{flex-wrap:wrap}.search{order:3;flex-basis:100%;max-width:none}.logo{flex:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="logo" href="#/" id="logo">Goran<b>Shop</b></a>
+    <form class="search" id="sf"><input id="q" type="search" placeholder="Search products, SKU, brand…" aria-label="Search"><button>Search</button></form>
+    <a class="hbtn" href="#/account" id="acct">Sign in</a>
+    <a class="hbtn" href="#/cart">Cart<span class="badge" id="cc">0</span></a>
+  </div>
+  <nav class="cats"><div class="wrap" id="catnav"></div></nav>
+</header>
+<main><div class="wrap" id="app"><div class="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></div></main>
+<footer><div class="wrap" id="foot"></div></footer>
+<div id="toast" role="status"></div>
+<script src="/store.js"></script>
+</body>
+</html>

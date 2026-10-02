@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>GoranShop Admin</title>
+<style>
+:root{--side:#071633;--primary:#0a1f44;--accent:#f2a900;--bg:#edf0f6;--card:#fff;--ink:#0f172a;--muted:#5a6480;--line:#dce2ee;--danger:#b3261e;--ok:#1d7a4d;--r:8px}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select,textarea{font:inherit;color:inherit}:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+#shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+aside{background:var(--side);color:#c9d4ea;padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto}
+aside h1{color:#fff;font-size:18px;margin:0 8px 18px}aside h1 b{color:var(--accent)}
+aside a{display:block;padding:9px 12px;border-radius:var(--r);color:inherit;text-decoration:none;cursor:pointer}aside a:hover{background:rgba(255,255,255,.08)}aside a.on{background:var(--accent);color:var(--ink);font-weight:700}
+aside .sub{margin-top:18px;border-top:1px solid rgba(255,255,255,.12);padding-top:12px;font-size:13px}
+header{display:none;background:var(--side);color:#fff;padding:10px 14px;align-items:center;gap:12px;position:sticky;top:0;z-index:15}
+main{padding:24px;min-width:0}h2{margin:0 0 16px;font-size:24px;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}.stat small{color:var(--muted)}.stat b{display:block;font-size:22px}
+.btn{background:var(--primary);color:#fff;border:0;border-radius:var(--r);padding:8px 14px;cursor:pointer;font-weight:600}.btn:hover{filter:brightness(1.15)}.btn.sec{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.red{background:var(--danger)}.btn.sm{padding:4px 9px;font-size:13px}
+input,select,textarea{border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;background:#fff;max-width:100%}textarea{width:100%}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}.tools input[type=search]{flex:1;min-width:160px}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}th{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap}tr.click{cursor:pointer}tr.click:hover{background:#f4f6fb}
+.thumb{width:40px;height:40px;border-radius:6px;object-fit:cover;background:#e4e9f3;display:block}
+.pill{padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700;background:#e4e9f3;white-space:nowrap}.pill.published,.pill.delivered,.pill.paid{background:#d7f0e2;color:var(--ok)}.pill.draft,.pill.cancelled,.pill.returned,.pill.unpaid{background:#f7dcda;color:var(--danger)}.pill.shipped,.pill.ready{background:#dbe9fb;color:#1a4f9c}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.form .w{grid-column:1/-1}label{display:block;font-size:13px;font-weight:600;margin-bottom:3px}.form input,.form select{width:100%}.chk{display:flex;gap:8px;align-items:center}.chk input{width:auto}
+#modal{position:fixed;inset:0;background:rgba(7,15,35,.6);display:none;justify-content:center;align-items:flex-start;padding:24px 12px;overflow:auto;z-index:30}#modal.on{display:flex}
+#modal>div{background:#fff;border-radius:12px;width:min(860px,100%);padding:20px}.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mh h3{margin:0}
+.imgs{display:flex;gap:8px;flex-wrap:wrap}.imgs div{position:relative}.imgs img{width:72px;height:72px;object-fit:cover;border-radius:6px}.imgs button{position:absolute;top:-6px;right:-6px;border:0;background:var(--danger);color:#fff;border-radius:50%;width:20px;height:20px;cursor:pointer}
+.msg{color:var(--danger);margin:8px 0}.muted{color:var(--muted)}.empty{padding:36px;text-align:center;color:var(--muted)}.bars{display:flex;align-items:flex-end;gap:6px;height:140px}.bars div{flex:1;background:var(--primary);border-radius:4px 4px 0 0;min-height:2px;position:relative}.bars small{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+#toast{position:fixed;bottom:18px;right:18px;background:#0f172a;color:#fff;padding:10px 16px;border-radius:var(--r);opacity:0;transition:opacity .2s;pointer-events:none;z-index:60}#toast.on{opacity:1}#toast.err{background:var(--danger)}
+#login{max-width:380px;margin:12vh auto;padding:0 16px}
+@media(max-width:860px){#shell{grid-template-columns:1fr}aside{position:fixed;left:-250px;width:230px;z-index:20;transition:left .2s}aside.open{left:0}header{display:flex}main{padding:14px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="login" hidden><div class="card"><h2>GoranShop admin</h2><form id="lf" class="form"><div class="w"><label>Email</label><input name="email" type="email" required></div><div class="w"><label>Password</label><input name="password" type="password" required></div><div class="w msg" id="lerr"></div><div class="w"><button class="btn" style="width:100%">Sign in</button></div></form><p class="muted"><a href="/">← Back to store</a></p></div></div>
+<div id="shell" hidden>
+  <aside id="side"><h1 id="brand">Admin</h1><nav id="nav"></nav><div class="sub"><a href="/" target="_blank">View store ↗</a><a id="out">Sign out</a></div></aside>
+  <div><header><button class="btn sec" id="burger" aria-label="Menu">☰</button><b>Admin</b></header><main id="main"></main></div>
+</div>
+<div id="modal" role="dialog" aria-modal="true"><div id="mbox"></div></div><div id="toast" role="status"></div>
+<script src="/admin.js"></script>
+</body>
+</html>
